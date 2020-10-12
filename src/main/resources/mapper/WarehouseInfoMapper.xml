@@ -1,324 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.leo.taobao.dao.WarehouseInfoMapper">
-  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.WarehouseInfo">
-    <id column="w_id" jdbcType="SMALLINT" property="wId" />
-    <result column="warehouse_sn" jdbcType="CHAR" property="warehouseSn" />
-    <result column="warehoust_name" jdbcType="VARCHAR" property="warehoustName" />
-    <result column="warehouse_phone" jdbcType="VARCHAR" property="warehousePhone" />
-    <result column="contact" jdbcType="VARCHAR" property="contact" />
-    <result column="province" jdbcType="SMALLINT" property="province" />
-    <result column="city" jdbcType="SMALLINT" property="city" />
-    <result column="distrct" jdbcType="SMALLINT" property="distrct" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="warehouse_status" jdbcType="TINYINT" property="warehouseStatus" />
-    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    w_id, warehouse_sn, warehoust_name, warehouse_phone, contact, province, city, distrct, 
-    address, warehouse_status, modified_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from warehouse_info
-    where w_id = #{wId,jdbcType=SMALLINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
-    delete from warehouse_info
-    where w_id = #{wId,jdbcType=SMALLINT}
-  </delete>
-  <insert id="insert" parameterType="com.leo.taobao.entity.WarehouseInfo">
-    insert into warehouse_info (w_id, warehouse_sn, warehoust_name, 
-      warehouse_phone, contact, province, 
-      city, distrct, address, 
-      warehouse_status, modified_time)
-    values (#{wId,jdbcType=SMALLINT}, #{warehouseSn,jdbcType=CHAR}, #{warehoustName,jdbcType=VARCHAR}, 
-      #{warehousePhone,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, #{province,jdbcType=SMALLINT}, 
-      #{city,jdbcType=SMALLINT}, #{distrct,jdbcType=SMALLINT}, #{address,jdbcType=VARCHAR}, 
-      #{warehouseStatus,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.leo.taobao.entity.WarehouseInfo">
-    insert into warehouse_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="wId != null">
-        w_id,
-      </if>
-      <if test="warehouseSn != null">
-        warehouse_sn,
-      </if>
-      <if test="warehoustName != null">
-        warehoust_name,
-      </if>
-      <if test="warehousePhone != null">
-        warehouse_phone,
-      </if>
-      <if test="contact != null">
-        contact,
-      </if>
-      <if test="province != null">
-        province,
-      </if>
-      <if test="city != null">
-        city,
-      </if>
-      <if test="distrct != null">
-        distrct,
-      </if>
-      <if test="address != null">
-        address,
-      </if>
-      <if test="warehouseStatus != null">
-        warehouse_status,
-      </if>
-      <if test="modifiedTime != null">
-        modified_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="wId != null">
-        #{wId,jdbcType=SMALLINT},
-      </if>
-      <if test="warehouseSn != null">
-        #{warehouseSn,jdbcType=CHAR},
-      </if>
-      <if test="warehoustName != null">
-        #{warehoustName,jdbcType=VARCHAR},
-      </if>
-      <if test="warehousePhone != null">
-        #{warehousePhone,jdbcType=VARCHAR},
-      </if>
-      <if test="contact != null">
-        #{contact,jdbcType=VARCHAR},
-      </if>
-      <if test="province != null">
-        #{province,jdbcType=SMALLINT},
-      </if>
-      <if test="city != null">
-        #{city,jdbcType=SMALLINT},
-      </if>
-      <if test="distrct != null">
-        #{distrct,jdbcType=SMALLINT},
-      </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="warehouseStatus != null">
-        #{warehouseStatus,jdbcType=TINYINT},
-      </if>
-      <if test="modifiedTime != null">
-        #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.WarehouseInfo">
-    update warehouse_info
-    <set>
-      <if test="warehouseSn != null">
-        warehouse_sn = #{warehouseSn,jdbcType=CHAR},
-      </if>
-      <if test="warehoustName != null">
+    <resultMap id="BaseResultMap" type="com.leo.taobao.entity.WarehouseInfo">
+        <id column="w_id" jdbcType="SMALLINT" property="wId"/>
+        <result column="warehouse_sn" jdbcType="CHAR" property="warehouseSn"/>
+        <result column="warehoust_name" jdbcType="VARCHAR" property="warehoustName"/>
+        <result column="warehouse_phone" jdbcType="VARCHAR" property="warehousePhone"/>
+        <result column="contact" jdbcType="VARCHAR" property="contact"/>
+        <result column="province" jdbcType="SMALLINT" property="province"/>
+        <result column="city" jdbcType="SMALLINT" property="city"/>
+        <result column="distrct" jdbcType="SMALLINT" property="distrct"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="warehouse_status" jdbcType="TINYINT" property="warehouseStatus"/>
+        <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        w_id, warehouse_sn, warehoust_name, warehouse_phone, contact, province, city, distrct,
+        address, warehouse_status, modified_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from warehouse_info
+        where w_id = #{wId,jdbcType=SMALLINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+        delete from warehouse_info
+        where w_id = #{wId,jdbcType=SMALLINT}
+    </delete>
+    <insert id="insert" parameterType="com.leo.taobao.entity.WarehouseInfo">
+        insert into warehouse_info (w_id, warehouse_sn, warehoust_name,
+        warehouse_phone, contact, province,
+        city, distrct, address,
+        warehouse_status, modified_time)
+        values (#{wId,jdbcType=SMALLINT}, #{warehouseSn,jdbcType=CHAR}, #{warehoustName,jdbcType=VARCHAR},
+        #{warehousePhone,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, #{province,jdbcType=SMALLINT},
+        #{city,jdbcType=SMALLINT}, #{distrct,jdbcType=SMALLINT}, #{address,jdbcType=VARCHAR},
+        #{warehouseStatus,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.leo.taobao.entity.WarehouseInfo">
+        insert into warehouse_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="wId != null">
+                w_id,
+            </if>
+            <if test="warehouseSn != null">
+                warehouse_sn,
+            </if>
+            <if test="warehoustName != null">
+                warehoust_name,
+            </if>
+            <if test="warehousePhone != null">
+                warehouse_phone,
+            </if>
+            <if test="contact != null">
+                contact,
+            </if>
+            <if test="province != null">
+                province,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="distrct != null">
+                distrct,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="warehouseStatus != null">
+                warehouse_status,
+            </if>
+            <if test="modifiedTime != null">
+                modified_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="wId != null">
+                #{wId,jdbcType=SMALLINT},
+            </if>
+            <if test="warehouseSn != null">
+                #{warehouseSn,jdbcType=CHAR},
+            </if>
+            <if test="warehoustName != null">
+                #{warehoustName,jdbcType=VARCHAR},
+            </if>
+            <if test="warehousePhone != null">
+                #{warehousePhone,jdbcType=VARCHAR},
+            </if>
+            <if test="contact != null">
+                #{contact,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null">
+                #{province,jdbcType=SMALLINT},
+            </if>
+            <if test="city != null">
+                #{city,jdbcType=SMALLINT},
+            </if>
+            <if test="distrct != null">
+                #{distrct,jdbcType=SMALLINT},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="warehouseStatus != null">
+                #{warehouseStatus,jdbcType=TINYINT},
+            </if>
+            <if test="modifiedTime != null">
+                #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.WarehouseInfo">
+        update warehouse_info
+        <set>
+            <if test="warehouseSn != null">
+                warehouse_sn = #{warehouseSn,jdbcType=CHAR},
+            </if>
+            <if test="warehoustName != null">
+                warehoust_name = #{warehoustName,jdbcType=VARCHAR},
+            </if>
+            <if test="warehousePhone != null">
+                warehouse_phone = #{warehousePhone,jdbcType=VARCHAR},
+            </if>
+            <if test="contact != null">
+                contact = #{contact,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null">
+                province = #{province,jdbcType=SMALLINT},
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=SMALLINT},
+            </if>
+            <if test="distrct != null">
+                distrct = #{distrct,jdbcType=SMALLINT},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="warehouseStatus != null">
+                warehouse_status = #{warehouseStatus,jdbcType=TINYINT},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where w_id = #{wId,jdbcType=SMALLINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.WarehouseInfo">
+        update warehouse_info
+        set warehouse_sn = #{warehouseSn,jdbcType=CHAR},
         warehoust_name = #{warehoustName,jdbcType=VARCHAR},
-      </if>
-      <if test="warehousePhone != null">
         warehouse_phone = #{warehousePhone,jdbcType=VARCHAR},
-      </if>
-      <if test="contact != null">
         contact = #{contact,jdbcType=VARCHAR},
-      </if>
-      <if test="province != null">
         province = #{province,jdbcType=SMALLINT},
-      </if>
-      <if test="city != null">
         city = #{city,jdbcType=SMALLINT},
-      </if>
-      <if test="distrct != null">
         distrct = #{distrct,jdbcType=SMALLINT},
-      </if>
-      <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="warehouseStatus != null">
         warehouse_status = #{warehouseStatus,jdbcType=TINYINT},
-      </if>
-      <if test="modifiedTime != null">
-        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where w_id = #{wId,jdbcType=SMALLINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.WarehouseInfo">
-    update warehouse_info
-    set warehouse_sn = #{warehouseSn,jdbcType=CHAR},
-      warehoust_name = #{warehoustName,jdbcType=VARCHAR},
-      warehouse_phone = #{warehousePhone,jdbcType=VARCHAR},
-      contact = #{contact,jdbcType=VARCHAR},
-      province = #{province,jdbcType=SMALLINT},
-      city = #{city,jdbcType=SMALLINT},
-      distrct = #{distrct,jdbcType=SMALLINT},
-      address = #{address,jdbcType=VARCHAR},
-      warehouse_status = #{warehouseStatus,jdbcType=TINYINT},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
-    where w_id = #{wId,jdbcType=SMALLINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.WarehouseInfo">
-    <id column="w_id" jdbcType="SMALLINT" property="wId" />
-    <result column="warehouse_sn" jdbcType="CHAR" property="warehouseSn" />
-    <result column="warehoust_name" jdbcType="VARCHAR" property="warehoustName" />
-    <result column="warehouse_phone" jdbcType="VARCHAR" property="warehousePhone" />
-    <result column="contact" jdbcType="VARCHAR" property="contact" />
-    <result column="province" jdbcType="SMALLINT" property="province" />
-    <result column="city" jdbcType="SMALLINT" property="city" />
-    <result column="distrct" jdbcType="SMALLINT" property="distrct" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="warehouse_status" jdbcType="TINYINT" property="warehouseStatus" />
-    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    w_id, warehouse_sn, warehoust_name, warehouse_phone, contact, province, city, distrct, 
-    address, warehouse_status, modified_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from warehouse_info
-    where w_id = #{wId,jdbcType=SMALLINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
-    delete from warehouse_info
-    where w_id = #{wId,jdbcType=SMALLINT}
-  </delete>
-  <insert id="insert" parameterType="com.leo.taobao.entity.WarehouseInfo">
-    insert into warehouse_info (w_id, warehouse_sn, warehoust_name, 
-      warehouse_phone, contact, province, 
-      city, distrct, address, 
-      warehouse_status, modified_time)
-    values (#{wId,jdbcType=SMALLINT}, #{warehouseSn,jdbcType=CHAR}, #{warehoustName,jdbcType=VARCHAR}, 
-      #{warehousePhone,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, #{province,jdbcType=SMALLINT}, 
-      #{city,jdbcType=SMALLINT}, #{distrct,jdbcType=SMALLINT}, #{address,jdbcType=VARCHAR}, 
-      #{warehouseStatus,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.leo.taobao.entity.WarehouseInfo">
-    insert into warehouse_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="wId != null">
-        w_id,
-      </if>
-      <if test="warehouseSn != null">
-        warehouse_sn,
-      </if>
-      <if test="warehoustName != null">
-        warehoust_name,
-      </if>
-      <if test="warehousePhone != null">
-        warehouse_phone,
-      </if>
-      <if test="contact != null">
-        contact,
-      </if>
-      <if test="province != null">
-        province,
-      </if>
-      <if test="city != null">
-        city,
-      </if>
-      <if test="distrct != null">
-        distrct,
-      </if>
-      <if test="address != null">
-        address,
-      </if>
-      <if test="warehouseStatus != null">
-        warehouse_status,
-      </if>
-      <if test="modifiedTime != null">
-        modified_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="wId != null">
-        #{wId,jdbcType=SMALLINT},
-      </if>
-      <if test="warehouseSn != null">
-        #{warehouseSn,jdbcType=CHAR},
-      </if>
-      <if test="warehoustName != null">
-        #{warehoustName,jdbcType=VARCHAR},
-      </if>
-      <if test="warehousePhone != null">
-        #{warehousePhone,jdbcType=VARCHAR},
-      </if>
-      <if test="contact != null">
-        #{contact,jdbcType=VARCHAR},
-      </if>
-      <if test="province != null">
-        #{province,jdbcType=SMALLINT},
-      </if>
-      <if test="city != null">
-        #{city,jdbcType=SMALLINT},
-      </if>
-      <if test="distrct != null">
-        #{distrct,jdbcType=SMALLINT},
-      </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="warehouseStatus != null">
-        #{warehouseStatus,jdbcType=TINYINT},
-      </if>
-      <if test="modifiedTime != null">
-        #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.WarehouseInfo">
-    update warehouse_info
-    <set>
-      <if test="warehouseSn != null">
-        warehouse_sn = #{warehouseSn,jdbcType=CHAR},
-      </if>
-      <if test="warehoustName != null">
-        warehoust_name = #{warehoustName,jdbcType=VARCHAR},
-      </if>
-      <if test="warehousePhone != null">
-        warehouse_phone = #{warehousePhone,jdbcType=VARCHAR},
-      </if>
-      <if test="contact != null">
-        contact = #{contact,jdbcType=VARCHAR},
-      </if>
-      <if test="province != null">
-        province = #{province,jdbcType=SMALLINT},
-      </if>
-      <if test="city != null">
-        city = #{city,jdbcType=SMALLINT},
-      </if>
-      <if test="distrct != null">
-        distrct = #{distrct,jdbcType=SMALLINT},
-      </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="warehouseStatus != null">
-        warehouse_status = #{warehouseStatus,jdbcType=TINYINT},
-      </if>
-      <if test="modifiedTime != null">
-        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where w_id = #{wId,jdbcType=SMALLINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.WarehouseInfo">
-    update warehouse_info
-    set warehouse_sn = #{warehouseSn,jdbcType=CHAR},
-      warehoust_name = #{warehoustName,jdbcType=VARCHAR},
-      warehouse_phone = #{warehousePhone,jdbcType=VARCHAR},
-      contact = #{contact,jdbcType=VARCHAR},
-      province = #{province,jdbcType=SMALLINT},
-      city = #{city,jdbcType=SMALLINT},
-      distrct = #{distrct,jdbcType=SMALLINT},
-      address = #{address,jdbcType=VARCHAR},
-      warehouse_status = #{warehouseStatus,jdbcType=TINYINT},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
-    where w_id = #{wId,jdbcType=SMALLINT}
-  </update>
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+        where w_id = #{wId,jdbcType=SMALLINT}
+    </update>
 </mapper>

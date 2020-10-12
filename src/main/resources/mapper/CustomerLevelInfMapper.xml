@@ -1,182 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.leo.taobao.dao.CustomerLevelInfMapper">
-  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.CustomerLevelInf">
-    <id column="customer_level" jdbcType="TINYINT" property="customerLevel" />
-    <result column="level_name" jdbcType="VARCHAR" property="levelName" />
-    <result column="min_point" jdbcType="INTEGER" property="minPoint" />
-    <result column="max_point" jdbcType="INTEGER" property="maxPoint" />
-    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    customer_level, level_name, min_point, max_point, modified_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from customer_level_inf
-    where customer_level = #{customerLevel,jdbcType=TINYINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
-    delete from customer_level_inf
-    where customer_level = #{customerLevel,jdbcType=TINYINT}
-  </delete>
-  <insert id="insert" parameterType="com.leo.taobao.entity.CustomerLevelInf">
-    insert into customer_level_inf (customer_level, level_name, min_point, 
-      max_point, modified_time)
-    values (#{customerLevel,jdbcType=TINYINT}, #{levelName,jdbcType=VARCHAR}, #{minPoint,jdbcType=INTEGER}, 
-      #{maxPoint,jdbcType=INTEGER}, #{modifiedTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.leo.taobao.entity.CustomerLevelInf">
-    insert into customer_level_inf
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="customerLevel != null">
-        customer_level,
-      </if>
-      <if test="levelName != null">
-        level_name,
-      </if>
-      <if test="minPoint != null">
-        min_point,
-      </if>
-      <if test="maxPoint != null">
-        max_point,
-      </if>
-      <if test="modifiedTime != null">
-        modified_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="customerLevel != null">
-        #{customerLevel,jdbcType=TINYINT},
-      </if>
-      <if test="levelName != null">
-        #{levelName,jdbcType=VARCHAR},
-      </if>
-      <if test="minPoint != null">
-        #{minPoint,jdbcType=INTEGER},
-      </if>
-      <if test="maxPoint != null">
-        #{maxPoint,jdbcType=INTEGER},
-      </if>
-      <if test="modifiedTime != null">
-        #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.CustomerLevelInf">
-    update customer_level_inf
-    <set>
-      <if test="levelName != null">
-        level_name = #{levelName,jdbcType=VARCHAR},
-      </if>
-      <if test="minPoint != null">
+    <resultMap id="BaseResultMap" type="com.leo.taobao.entity.CustomerLevelInf">
+        <id column="customer_level" jdbcType="TINYINT" property="customerLevel"/>
+        <result column="level_name" jdbcType="VARCHAR" property="levelName"/>
+        <result column="min_point" jdbcType="INTEGER" property="minPoint"/>
+        <result column="max_point" jdbcType="INTEGER" property="maxPoint"/>
+        <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        customer_level, level_name, min_point, max_point, modified_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from customer_level_inf
+        where customer_level = #{customerLevel,jdbcType=TINYINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+        delete from customer_level_inf
+        where customer_level = #{customerLevel,jdbcType=TINYINT}
+    </delete>
+    <insert id="insert" parameterType="com.leo.taobao.entity.CustomerLevelInf">
+        insert into customer_level_inf (customer_level, level_name, min_point,
+        max_point, modified_time)
+        values (#{customerLevel,jdbcType=TINYINT}, #{levelName,jdbcType=VARCHAR}, #{minPoint,jdbcType=INTEGER},
+        #{maxPoint,jdbcType=INTEGER}, #{modifiedTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.leo.taobao.entity.CustomerLevelInf">
+        insert into customer_level_inf
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="customerLevel != null">
+                customer_level,
+            </if>
+            <if test="levelName != null">
+                level_name,
+            </if>
+            <if test="minPoint != null">
+                min_point,
+            </if>
+            <if test="maxPoint != null">
+                max_point,
+            </if>
+            <if test="modifiedTime != null">
+                modified_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="customerLevel != null">
+                #{customerLevel,jdbcType=TINYINT},
+            </if>
+            <if test="levelName != null">
+                #{levelName,jdbcType=VARCHAR},
+            </if>
+            <if test="minPoint != null">
+                #{minPoint,jdbcType=INTEGER},
+            </if>
+            <if test="maxPoint != null">
+                #{maxPoint,jdbcType=INTEGER},
+            </if>
+            <if test="modifiedTime != null">
+                #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.CustomerLevelInf">
+        update customer_level_inf
+        <set>
+            <if test="levelName != null">
+                level_name = #{levelName,jdbcType=VARCHAR},
+            </if>
+            <if test="minPoint != null">
+                min_point = #{minPoint,jdbcType=INTEGER},
+            </if>
+            <if test="maxPoint != null">
+                max_point = #{maxPoint,jdbcType=INTEGER},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where customer_level = #{customerLevel,jdbcType=TINYINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.CustomerLevelInf">
+        update customer_level_inf
+        set level_name = #{levelName,jdbcType=VARCHAR},
         min_point = #{minPoint,jdbcType=INTEGER},
-      </if>
-      <if test="maxPoint != null">
         max_point = #{maxPoint,jdbcType=INTEGER},
-      </if>
-      <if test="modifiedTime != null">
-        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where customer_level = #{customerLevel,jdbcType=TINYINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.CustomerLevelInf">
-    update customer_level_inf
-    set level_name = #{levelName,jdbcType=VARCHAR},
-      min_point = #{minPoint,jdbcType=INTEGER},
-      max_point = #{maxPoint,jdbcType=INTEGER},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
-    where customer_level = #{customerLevel,jdbcType=TINYINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.CustomerLevelInf">
-    <id column="customer_level" jdbcType="TINYINT" property="customerLevel" />
-    <result column="level_name" jdbcType="VARCHAR" property="levelName" />
-    <result column="min_point" jdbcType="INTEGER" property="minPoint" />
-    <result column="max_point" jdbcType="INTEGER" property="maxPoint" />
-    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    customer_level, level_name, min_point, max_point, modified_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from customer_level_inf
-    where customer_level = #{customerLevel,jdbcType=TINYINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
-    delete from customer_level_inf
-    where customer_level = #{customerLevel,jdbcType=TINYINT}
-  </delete>
-  <insert id="insert" parameterType="com.leo.taobao.entity.CustomerLevelInf">
-    insert into customer_level_inf (customer_level, level_name, min_point, 
-      max_point, modified_time)
-    values (#{customerLevel,jdbcType=TINYINT}, #{levelName,jdbcType=VARCHAR}, #{minPoint,jdbcType=INTEGER}, 
-      #{maxPoint,jdbcType=INTEGER}, #{modifiedTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.leo.taobao.entity.CustomerLevelInf">
-    insert into customer_level_inf
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="customerLevel != null">
-        customer_level,
-      </if>
-      <if test="levelName != null">
-        level_name,
-      </if>
-      <if test="minPoint != null">
-        min_point,
-      </if>
-      <if test="maxPoint != null">
-        max_point,
-      </if>
-      <if test="modifiedTime != null">
-        modified_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="customerLevel != null">
-        #{customerLevel,jdbcType=TINYINT},
-      </if>
-      <if test="levelName != null">
-        #{levelName,jdbcType=VARCHAR},
-      </if>
-      <if test="minPoint != null">
-        #{minPoint,jdbcType=INTEGER},
-      </if>
-      <if test="maxPoint != null">
-        #{maxPoint,jdbcType=INTEGER},
-      </if>
-      <if test="modifiedTime != null">
-        #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.CustomerLevelInf">
-    update customer_level_inf
-    <set>
-      <if test="levelName != null">
-        level_name = #{levelName,jdbcType=VARCHAR},
-      </if>
-      <if test="minPoint != null">
-        min_point = #{minPoint,jdbcType=INTEGER},
-      </if>
-      <if test="maxPoint != null">
-        max_point = #{maxPoint,jdbcType=INTEGER},
-      </if>
-      <if test="modifiedTime != null">
-        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where customer_level = #{customerLevel,jdbcType=TINYINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.CustomerLevelInf">
-    update customer_level_inf
-    set level_name = #{levelName,jdbcType=VARCHAR},
-      min_point = #{minPoint,jdbcType=INTEGER},
-      max_point = #{maxPoint,jdbcType=INTEGER},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
-    where customer_level = #{customerLevel,jdbcType=TINYINT}
-  </update>
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+        where customer_level = #{customerLevel,jdbcType=TINYINT}
+    </update>
 </mapper>

@@ -1,7 +1,12 @@
 package com.leo.taobao.dao;
 
 import com.leo.taobao.entity.CustomerLevelInf;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+
+@Mapper
+@Component(value = "CustomerLevelInfMapper")
 public interface CustomerLevelInfMapper {
     int deleteByPrimaryKey(Byte customerLevel);
 

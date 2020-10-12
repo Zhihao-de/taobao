@@ -1,6 +1,11 @@
 package com.leo.taobao.dao;
 
 import com.leo.taobao.entity.WarehouseProduct;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
+
+@Mapper
+@Component(value = "WarehouseProductMapper")
 
 public interface WarehouseProductMapper {
     int deleteByPrimaryKey(Integer wpId);

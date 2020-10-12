@@ -1,7 +1,12 @@
 package com.leo.taobao.dao;
 
 import com.leo.taobao.entity.CustomerBalanceLog;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+@Mapper
+@Component(value = "customerBalanceLogMapper")
 public interface CustomerBalanceLogMapper {
     int deleteByPrimaryKey(Integer balanceId);
 

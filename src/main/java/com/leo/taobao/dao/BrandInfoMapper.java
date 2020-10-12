@@ -1,7 +1,11 @@
 package com.leo.taobao.dao;
 
 import com.leo.taobao.entity.BrandInfo;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+@Mapper
+@Component(value = "BrandInfoMapper")
 public interface BrandInfoMapper {
     int deleteByPrimaryKey(Short brandId);
 

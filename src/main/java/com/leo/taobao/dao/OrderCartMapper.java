@@ -1,7 +1,11 @@
 package com.leo.taobao.dao;
 
 import com.leo.taobao.entity.OrderCart;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+@Mapper
+@Component(value = "OrderCartMapper")
 public interface OrderCartMapper {
     int deleteByPrimaryKey(Integer cartId);
 

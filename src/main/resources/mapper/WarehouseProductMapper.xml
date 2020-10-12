@@ -1,252 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.leo.taobao.dao.WarehouseProductMapper">
-  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.WarehouseProduct">
-    <id column="wp_id" jdbcType="INTEGER" property="wpId" />
-    <result column="product_id" jdbcType="INTEGER" property="productId" />
-    <result column="w_id" jdbcType="SMALLINT" property="wId" />
-    <result column="current_cnt" jdbcType="INTEGER" property="currentCnt" />
-    <result column="lock_cnt" jdbcType="INTEGER" property="lockCnt" />
-    <result column="in_transit_cnt" jdbcType="INTEGER" property="inTransitCnt" />
-    <result column="average_cost" jdbcType="DECIMAL" property="averageCost" />
-    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    wp_id, product_id, w_id, current_cnt, lock_cnt, in_transit_cnt, average_cost, modified_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from warehouse_product
-    where wp_id = #{wpId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from warehouse_product
-    where wp_id = #{wpId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.leo.taobao.entity.WarehouseProduct">
-    insert into warehouse_product (wp_id, product_id, w_id, 
-      current_cnt, lock_cnt, in_transit_cnt, 
-      average_cost, modified_time)
-    values (#{wpId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{wId,jdbcType=SMALLINT}, 
-      #{currentCnt,jdbcType=INTEGER}, #{lockCnt,jdbcType=INTEGER}, #{inTransitCnt,jdbcType=INTEGER}, 
-      #{averageCost,jdbcType=DECIMAL}, #{modifiedTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.leo.taobao.entity.WarehouseProduct">
-    insert into warehouse_product
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="wpId != null">
-        wp_id,
-      </if>
-      <if test="productId != null">
-        product_id,
-      </if>
-      <if test="wId != null">
-        w_id,
-      </if>
-      <if test="currentCnt != null">
-        current_cnt,
-      </if>
-      <if test="lockCnt != null">
-        lock_cnt,
-      </if>
-      <if test="inTransitCnt != null">
-        in_transit_cnt,
-      </if>
-      <if test="averageCost != null">
-        average_cost,
-      </if>
-      <if test="modifiedTime != null">
-        modified_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="wpId != null">
-        #{wpId,jdbcType=INTEGER},
-      </if>
-      <if test="productId != null">
-        #{productId,jdbcType=INTEGER},
-      </if>
-      <if test="wId != null">
-        #{wId,jdbcType=SMALLINT},
-      </if>
-      <if test="currentCnt != null">
-        #{currentCnt,jdbcType=INTEGER},
-      </if>
-      <if test="lockCnt != null">
-        #{lockCnt,jdbcType=INTEGER},
-      </if>
-      <if test="inTransitCnt != null">
-        #{inTransitCnt,jdbcType=INTEGER},
-      </if>
-      <if test="averageCost != null">
-        #{averageCost,jdbcType=DECIMAL},
-      </if>
-      <if test="modifiedTime != null">
-        #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.WarehouseProduct">
-    update warehouse_product
-    <set>
-      <if test="productId != null">
-        product_id = #{productId,jdbcType=INTEGER},
-      </if>
-      <if test="wId != null">
+    <resultMap id="BaseResultMap" type="com.leo.taobao.entity.WarehouseProduct">
+        <id column="wp_id" jdbcType="INTEGER" property="wpId"/>
+        <result column="product_id" jdbcType="INTEGER" property="productId"/>
+        <result column="w_id" jdbcType="SMALLINT" property="wId"/>
+        <result column="current_cnt" jdbcType="INTEGER" property="currentCnt"/>
+        <result column="lock_cnt" jdbcType="INTEGER" property="lockCnt"/>
+        <result column="in_transit_cnt" jdbcType="INTEGER" property="inTransitCnt"/>
+        <result column="average_cost" jdbcType="DECIMAL" property="averageCost"/>
+        <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        wp_id, product_id, w_id, current_cnt, lock_cnt, in_transit_cnt, average_cost, modified_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from warehouse_product
+        where wp_id = #{wpId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from warehouse_product
+        where wp_id = #{wpId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.leo.taobao.entity.WarehouseProduct">
+        insert into warehouse_product (wp_id, product_id, w_id,
+        current_cnt, lock_cnt, in_transit_cnt,
+        average_cost, modified_time)
+        values (#{wpId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{wId,jdbcType=SMALLINT},
+        #{currentCnt,jdbcType=INTEGER}, #{lockCnt,jdbcType=INTEGER}, #{inTransitCnt,jdbcType=INTEGER},
+        #{averageCost,jdbcType=DECIMAL}, #{modifiedTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.leo.taobao.entity.WarehouseProduct">
+        insert into warehouse_product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="wpId != null">
+                wp_id,
+            </if>
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="wId != null">
+                w_id,
+            </if>
+            <if test="currentCnt != null">
+                current_cnt,
+            </if>
+            <if test="lockCnt != null">
+                lock_cnt,
+            </if>
+            <if test="inTransitCnt != null">
+                in_transit_cnt,
+            </if>
+            <if test="averageCost != null">
+                average_cost,
+            </if>
+            <if test="modifiedTime != null">
+                modified_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="wpId != null">
+                #{wpId,jdbcType=INTEGER},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=INTEGER},
+            </if>
+            <if test="wId != null">
+                #{wId,jdbcType=SMALLINT},
+            </if>
+            <if test="currentCnt != null">
+                #{currentCnt,jdbcType=INTEGER},
+            </if>
+            <if test="lockCnt != null">
+                #{lockCnt,jdbcType=INTEGER},
+            </if>
+            <if test="inTransitCnt != null">
+                #{inTransitCnt,jdbcType=INTEGER},
+            </if>
+            <if test="averageCost != null">
+                #{averageCost,jdbcType=DECIMAL},
+            </if>
+            <if test="modifiedTime != null">
+                #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.WarehouseProduct">
+        update warehouse_product
+        <set>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=INTEGER},
+            </if>
+            <if test="wId != null">
+                w_id = #{wId,jdbcType=SMALLINT},
+            </if>
+            <if test="currentCnt != null">
+                current_cnt = #{currentCnt,jdbcType=INTEGER},
+            </if>
+            <if test="lockCnt != null">
+                lock_cnt = #{lockCnt,jdbcType=INTEGER},
+            </if>
+            <if test="inTransitCnt != null">
+                in_transit_cnt = #{inTransitCnt,jdbcType=INTEGER},
+            </if>
+            <if test="averageCost != null">
+                average_cost = #{averageCost,jdbcType=DECIMAL},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where wp_id = #{wpId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.WarehouseProduct">
+        update warehouse_product
+        set product_id = #{productId,jdbcType=INTEGER},
         w_id = #{wId,jdbcType=SMALLINT},
-      </if>
-      <if test="currentCnt != null">
         current_cnt = #{currentCnt,jdbcType=INTEGER},
-      </if>
-      <if test="lockCnt != null">
         lock_cnt = #{lockCnt,jdbcType=INTEGER},
-      </if>
-      <if test="inTransitCnt != null">
         in_transit_cnt = #{inTransitCnt,jdbcType=INTEGER},
-      </if>
-      <if test="averageCost != null">
         average_cost = #{averageCost,jdbcType=DECIMAL},
-      </if>
-      <if test="modifiedTime != null">
-        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where wp_id = #{wpId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.WarehouseProduct">
-    update warehouse_product
-    set product_id = #{productId,jdbcType=INTEGER},
-      w_id = #{wId,jdbcType=SMALLINT},
-      current_cnt = #{currentCnt,jdbcType=INTEGER},
-      lock_cnt = #{lockCnt,jdbcType=INTEGER},
-      in_transit_cnt = #{inTransitCnt,jdbcType=INTEGER},
-      average_cost = #{averageCost,jdbcType=DECIMAL},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
-    where wp_id = #{wpId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.WarehouseProduct">
-    <id column="wp_id" jdbcType="INTEGER" property="wpId" />
-    <result column="product_id" jdbcType="INTEGER" property="productId" />
-    <result column="w_id" jdbcType="SMALLINT" property="wId" />
-    <result column="current_cnt" jdbcType="INTEGER" property="currentCnt" />
-    <result column="lock_cnt" jdbcType="INTEGER" property="lockCnt" />
-    <result column="in_transit_cnt" jdbcType="INTEGER" property="inTransitCnt" />
-    <result column="average_cost" jdbcType="DECIMAL" property="averageCost" />
-    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    wp_id, product_id, w_id, current_cnt, lock_cnt, in_transit_cnt, average_cost, modified_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from warehouse_product
-    where wp_id = #{wpId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from warehouse_product
-    where wp_id = #{wpId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.leo.taobao.entity.WarehouseProduct">
-    insert into warehouse_product (wp_id, product_id, w_id, 
-      current_cnt, lock_cnt, in_transit_cnt, 
-      average_cost, modified_time)
-    values (#{wpId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{wId,jdbcType=SMALLINT}, 
-      #{currentCnt,jdbcType=INTEGER}, #{lockCnt,jdbcType=INTEGER}, #{inTransitCnt,jdbcType=INTEGER}, 
-      #{averageCost,jdbcType=DECIMAL}, #{modifiedTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.leo.taobao.entity.WarehouseProduct">
-    insert into warehouse_product
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="wpId != null">
-        wp_id,
-      </if>
-      <if test="productId != null">
-        product_id,
-      </if>
-      <if test="wId != null">
-        w_id,
-      </if>
-      <if test="currentCnt != null">
-        current_cnt,
-      </if>
-      <if test="lockCnt != null">
-        lock_cnt,
-      </if>
-      <if test="inTransitCnt != null">
-        in_transit_cnt,
-      </if>
-      <if test="averageCost != null">
-        average_cost,
-      </if>
-      <if test="modifiedTime != null">
-        modified_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="wpId != null">
-        #{wpId,jdbcType=INTEGER},
-      </if>
-      <if test="productId != null">
-        #{productId,jdbcType=INTEGER},
-      </if>
-      <if test="wId != null">
-        #{wId,jdbcType=SMALLINT},
-      </if>
-      <if test="currentCnt != null">
-        #{currentCnt,jdbcType=INTEGER},
-      </if>
-      <if test="lockCnt != null">
-        #{lockCnt,jdbcType=INTEGER},
-      </if>
-      <if test="inTransitCnt != null">
-        #{inTransitCnt,jdbcType=INTEGER},
-      </if>
-      <if test="averageCost != null">
-        #{averageCost,jdbcType=DECIMAL},
-      </if>
-      <if test="modifiedTime != null">
-        #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.WarehouseProduct">
-    update warehouse_product
-    <set>
-      <if test="productId != null">
-        product_id = #{productId,jdbcType=INTEGER},
-      </if>
-      <if test="wId != null">
-        w_id = #{wId,jdbcType=SMALLINT},
-      </if>
-      <if test="currentCnt != null">
-        current_cnt = #{currentCnt,jdbcType=INTEGER},
-      </if>
-      <if test="lockCnt != null">
-        lock_cnt = #{lockCnt,jdbcType=INTEGER},
-      </if>
-      <if test="inTransitCnt != null">
-        in_transit_cnt = #{inTransitCnt,jdbcType=INTEGER},
-      </if>
-      <if test="averageCost != null">
-        average_cost = #{averageCost,jdbcType=DECIMAL},
-      </if>
-      <if test="modifiedTime != null">
-        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where wp_id = #{wpId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.WarehouseProduct">
-    update warehouse_product
-    set product_id = #{productId,jdbcType=INTEGER},
-      w_id = #{wId,jdbcType=SMALLINT},
-      current_cnt = #{currentCnt,jdbcType=INTEGER},
-      lock_cnt = #{lockCnt,jdbcType=INTEGER},
-      in_transit_cnt = #{inTransitCnt,jdbcType=INTEGER},
-      average_cost = #{averageCost,jdbcType=DECIMAL},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
-    where wp_id = #{wpId,jdbcType=INTEGER}
-  </update>
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+        where wp_id = #{wpId,jdbcType=INTEGER}
+    </update>
 </mapper>

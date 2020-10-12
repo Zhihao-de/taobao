@@ -1,182 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.leo.taobao.dao.CustomerLoginLogMapper">
-  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.CustomerLoginLog">
-    <id column="login_id" jdbcType="INTEGER" property="loginId" />
-    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
-    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
-    <result column="login_ip" jdbcType="INTEGER" property="loginIp" />
-    <result column="login_type" jdbcType="TINYINT" property="loginType" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    login_id, customer_id, login_time, login_ip, login_type
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from customer_login_log
-    where login_id = #{loginId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from customer_login_log
-    where login_id = #{loginId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.leo.taobao.entity.CustomerLoginLog">
-    insert into customer_login_log (login_id, customer_id, login_time, 
-      login_ip, login_type)
-    values (#{loginId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{loginTime,jdbcType=TIMESTAMP}, 
-      #{loginIp,jdbcType=INTEGER}, #{loginType,jdbcType=TINYINT})
-  </insert>
-  <insert id="insertSelective" parameterType="com.leo.taobao.entity.CustomerLoginLog">
-    insert into customer_login_log
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="loginId != null">
-        login_id,
-      </if>
-      <if test="customerId != null">
-        customer_id,
-      </if>
-      <if test="loginTime != null">
-        login_time,
-      </if>
-      <if test="loginIp != null">
-        login_ip,
-      </if>
-      <if test="loginType != null">
-        login_type,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="loginId != null">
-        #{loginId,jdbcType=INTEGER},
-      </if>
-      <if test="customerId != null">
-        #{customerId,jdbcType=INTEGER},
-      </if>
-      <if test="loginTime != null">
-        #{loginTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="loginIp != null">
-        #{loginIp,jdbcType=INTEGER},
-      </if>
-      <if test="loginType != null">
-        #{loginType,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.CustomerLoginLog">
-    update customer_login_log
-    <set>
-      <if test="customerId != null">
-        customer_id = #{customerId,jdbcType=INTEGER},
-      </if>
-      <if test="loginTime != null">
+    <resultMap id="BaseResultMap" type="com.leo.taobao.entity.CustomerLoginLog">
+        <id column="login_id" jdbcType="INTEGER" property="loginId"/>
+        <result column="customer_id" jdbcType="INTEGER" property="customerId"/>
+        <result column="login_time" jdbcType="TIMESTAMP" property="loginTime"/>
+        <result column="login_ip" jdbcType="INTEGER" property="loginIp"/>
+        <result column="login_type" jdbcType="TINYINT" property="loginType"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        login_id, customer_id, login_time, login_ip, login_type
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from customer_login_log
+        where login_id = #{loginId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from customer_login_log
+        where login_id = #{loginId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.leo.taobao.entity.CustomerLoginLog">
+        insert into customer_login_log (login_id, customer_id, login_time,
+        login_ip, login_type)
+        values (#{loginId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{loginTime,jdbcType=TIMESTAMP},
+        #{loginIp,jdbcType=INTEGER}, #{loginType,jdbcType=TINYINT})
+    </insert>
+    <insert id="insertSelective" parameterType="com.leo.taobao.entity.CustomerLoginLog">
+        insert into customer_login_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="loginId != null">
+                login_id,
+            </if>
+            <if test="customerId != null">
+                customer_id,
+            </if>
+            <if test="loginTime != null">
+                login_time,
+            </if>
+            <if test="loginIp != null">
+                login_ip,
+            </if>
+            <if test="loginType != null">
+                login_type,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="loginId != null">
+                #{loginId,jdbcType=INTEGER},
+            </if>
+            <if test="customerId != null">
+                #{customerId,jdbcType=INTEGER},
+            </if>
+            <if test="loginTime != null">
+                #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginIp != null">
+                #{loginIp,jdbcType=INTEGER},
+            </if>
+            <if test="loginType != null">
+                #{loginType,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.CustomerLoginLog">
+        update customer_login_log
+        <set>
+            <if test="customerId != null">
+                customer_id = #{customerId,jdbcType=INTEGER},
+            </if>
+            <if test="loginTime != null">
+                login_time = #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginIp != null">
+                login_ip = #{loginIp,jdbcType=INTEGER},
+            </if>
+            <if test="loginType != null">
+                login_type = #{loginType,jdbcType=TINYINT},
+            </if>
+        </set>
+        where login_id = #{loginId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.CustomerLoginLog">
+        update customer_login_log
+        set customer_id = #{customerId,jdbcType=INTEGER},
         login_time = #{loginTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="loginIp != null">
         login_ip = #{loginIp,jdbcType=INTEGER},
-      </if>
-      <if test="loginType != null">
-        login_type = #{loginType,jdbcType=TINYINT},
-      </if>
-    </set>
-    where login_id = #{loginId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.CustomerLoginLog">
-    update customer_login_log
-    set customer_id = #{customerId,jdbcType=INTEGER},
-      login_time = #{loginTime,jdbcType=TIMESTAMP},
-      login_ip = #{loginIp,jdbcType=INTEGER},
-      login_type = #{loginType,jdbcType=TINYINT}
-    where login_id = #{loginId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.CustomerLoginLog">
-    <id column="login_id" jdbcType="INTEGER" property="loginId" />
-    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
-    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
-    <result column="login_ip" jdbcType="INTEGER" property="loginIp" />
-    <result column="login_type" jdbcType="TINYINT" property="loginType" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    login_id, customer_id, login_time, login_ip, login_type
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from customer_login_log
-    where login_id = #{loginId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from customer_login_log
-    where login_id = #{loginId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.leo.taobao.entity.CustomerLoginLog">
-    insert into customer_login_log (login_id, customer_id, login_time, 
-      login_ip, login_type)
-    values (#{loginId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{loginTime,jdbcType=TIMESTAMP}, 
-      #{loginIp,jdbcType=INTEGER}, #{loginType,jdbcType=TINYINT})
-  </insert>
-  <insert id="insertSelective" parameterType="com.leo.taobao.entity.CustomerLoginLog">
-    insert into customer_login_log
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="loginId != null">
-        login_id,
-      </if>
-      <if test="customerId != null">
-        customer_id,
-      </if>
-      <if test="loginTime != null">
-        login_time,
-      </if>
-      <if test="loginIp != null">
-        login_ip,
-      </if>
-      <if test="loginType != null">
-        login_type,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="loginId != null">
-        #{loginId,jdbcType=INTEGER},
-      </if>
-      <if test="customerId != null">
-        #{customerId,jdbcType=INTEGER},
-      </if>
-      <if test="loginTime != null">
-        #{loginTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="loginIp != null">
-        #{loginIp,jdbcType=INTEGER},
-      </if>
-      <if test="loginType != null">
-        #{loginType,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.CustomerLoginLog">
-    update customer_login_log
-    <set>
-      <if test="customerId != null">
-        customer_id = #{customerId,jdbcType=INTEGER},
-      </if>
-      <if test="loginTime != null">
-        login_time = #{loginTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="loginIp != null">
-        login_ip = #{loginIp,jdbcType=INTEGER},
-      </if>
-      <if test="loginType != null">
-        login_type = #{loginType,jdbcType=TINYINT},
-      </if>
-    </set>
-    where login_id = #{loginId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.CustomerLoginLog">
-    update customer_login_log
-    set customer_id = #{customerId,jdbcType=INTEGER},
-      login_time = #{loginTime,jdbcType=TIMESTAMP},
-      login_ip = #{loginIp,jdbcType=INTEGER},
-      login_type = #{loginType,jdbcType=TINYINT}
-    where login_id = #{loginId,jdbcType=INTEGER}
-  </update>
+        login_type = #{loginType,jdbcType=TINYINT}
+        where login_id = #{loginId,jdbcType=INTEGER}
+    </update>
 </mapper>

@@ -1,280 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.leo.taobao.dao.BrandInfoMapper">
-  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.BrandInfo">
-    <id column="brand_id" jdbcType="SMALLINT" property="brandId" />
-    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
-    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
-    <result column="brand_web" jdbcType="VARCHAR" property="brandWeb" />
-    <result column="brand_logo" jdbcType="VARCHAR" property="brandLogo" />
-    <result column="brand_desc" jdbcType="VARCHAR" property="brandDesc" />
-    <result column="brand_status" jdbcType="TINYINT" property="brandStatus" />
-    <result column="brand_order" jdbcType="TINYINT" property="brandOrder" />
-    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    brand_id, brand_name, telephone, brand_web, brand_logo, brand_desc, brand_status, 
-    brand_order, modified_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from brand_info
-    where brand_id = #{brandId,jdbcType=SMALLINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
-    delete from brand_info
-    where brand_id = #{brandId,jdbcType=SMALLINT}
-  </delete>
-  <insert id="insert" parameterType="com.leo.taobao.entity.BrandInfo">
-    insert into brand_info (brand_id, brand_name, telephone, 
-      brand_web, brand_logo, brand_desc, 
-      brand_status, brand_order, modified_time
-      )
-    values (#{brandId,jdbcType=SMALLINT}, #{brandName,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
-      #{brandWeb,jdbcType=VARCHAR}, #{brandLogo,jdbcType=VARCHAR}, #{brandDesc,jdbcType=VARCHAR}, 
-      #{brandStatus,jdbcType=TINYINT}, #{brandOrder,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.leo.taobao.entity.BrandInfo">
-    insert into brand_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="brandId != null">
-        brand_id,
-      </if>
-      <if test="brandName != null">
-        brand_name,
-      </if>
-      <if test="telephone != null">
-        telephone,
-      </if>
-      <if test="brandWeb != null">
-        brand_web,
-      </if>
-      <if test="brandLogo != null">
-        brand_logo,
-      </if>
-      <if test="brandDesc != null">
-        brand_desc,
-      </if>
-      <if test="brandStatus != null">
-        brand_status,
-      </if>
-      <if test="brandOrder != null">
-        brand_order,
-      </if>
-      <if test="modifiedTime != null">
-        modified_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="brandId != null">
-        #{brandId,jdbcType=SMALLINT},
-      </if>
-      <if test="brandName != null">
-        #{brandName,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null">
-        #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="brandWeb != null">
-        #{brandWeb,jdbcType=VARCHAR},
-      </if>
-      <if test="brandLogo != null">
-        #{brandLogo,jdbcType=VARCHAR},
-      </if>
-      <if test="brandDesc != null">
-        #{brandDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="brandStatus != null">
-        #{brandStatus,jdbcType=TINYINT},
-      </if>
-      <if test="brandOrder != null">
-        #{brandOrder,jdbcType=TINYINT},
-      </if>
-      <if test="modifiedTime != null">
-        #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.BrandInfo">
-    update brand_info
-    <set>
-      <if test="brandName != null">
-        brand_name = #{brandName,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null">
+    <resultMap id="BaseResultMap" type="com.leo.taobao.entity.BrandInfo">
+        <id column="brand_id" jdbcType="SMALLINT" property="brandId"/>
+        <result column="brand_name" jdbcType="VARCHAR" property="brandName"/>
+        <result column="telephone" jdbcType="VARCHAR" property="telephone"/>
+        <result column="brand_web" jdbcType="VARCHAR" property="brandWeb"/>
+        <result column="brand_logo" jdbcType="VARCHAR" property="brandLogo"/>
+        <result column="brand_desc" jdbcType="VARCHAR" property="brandDesc"/>
+        <result column="brand_status" jdbcType="TINYINT" property="brandStatus"/>
+        <result column="brand_order" jdbcType="TINYINT" property="brandOrder"/>
+        <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        brand_id, brand_name, telephone, brand_web, brand_logo, brand_desc, brand_status,
+        brand_order, modified_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from brand_info
+        where brand_id = #{brandId,jdbcType=SMALLINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+        delete from brand_info
+        where brand_id = #{brandId,jdbcType=SMALLINT}
+    </delete>
+    <insert id="insert" parameterType="com.leo.taobao.entity.BrandInfo">
+        insert into brand_info (brand_id, brand_name, telephone,
+        brand_web, brand_logo, brand_desc,
+        brand_status, brand_order, modified_time
+        )
+        values (#{brandId,jdbcType=SMALLINT}, #{brandName,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR},
+        #{brandWeb,jdbcType=VARCHAR}, #{brandLogo,jdbcType=VARCHAR}, #{brandDesc,jdbcType=VARCHAR},
+        #{brandStatus,jdbcType=TINYINT}, #{brandOrder,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.leo.taobao.entity.BrandInfo">
+        insert into brand_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="brandId != null">
+                brand_id,
+            </if>
+            <if test="brandName != null">
+                brand_name,
+            </if>
+            <if test="telephone != null">
+                telephone,
+            </if>
+            <if test="brandWeb != null">
+                brand_web,
+            </if>
+            <if test="brandLogo != null">
+                brand_logo,
+            </if>
+            <if test="brandDesc != null">
+                brand_desc,
+            </if>
+            <if test="brandStatus != null">
+                brand_status,
+            </if>
+            <if test="brandOrder != null">
+                brand_order,
+            </if>
+            <if test="modifiedTime != null">
+                modified_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="brandId != null">
+                #{brandId,jdbcType=SMALLINT},
+            </if>
+            <if test="brandName != null">
+                #{brandName,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null">
+                #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="brandWeb != null">
+                #{brandWeb,jdbcType=VARCHAR},
+            </if>
+            <if test="brandLogo != null">
+                #{brandLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="brandDesc != null">
+                #{brandDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="brandStatus != null">
+                #{brandStatus,jdbcType=TINYINT},
+            </if>
+            <if test="brandOrder != null">
+                #{brandOrder,jdbcType=TINYINT},
+            </if>
+            <if test="modifiedTime != null">
+                #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.BrandInfo">
+        update brand_info
+        <set>
+            <if test="brandName != null">
+                brand_name = #{brandName,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null">
+                telephone = #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="brandWeb != null">
+                brand_web = #{brandWeb,jdbcType=VARCHAR},
+            </if>
+            <if test="brandLogo != null">
+                brand_logo = #{brandLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="brandDesc != null">
+                brand_desc = #{brandDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="brandStatus != null">
+                brand_status = #{brandStatus,jdbcType=TINYINT},
+            </if>
+            <if test="brandOrder != null">
+                brand_order = #{brandOrder,jdbcType=TINYINT},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where brand_id = #{brandId,jdbcType=SMALLINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.BrandInfo">
+        update brand_info
+        set brand_name = #{brandName,jdbcType=VARCHAR},
         telephone = #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="brandWeb != null">
         brand_web = #{brandWeb,jdbcType=VARCHAR},
-      </if>
-      <if test="brandLogo != null">
         brand_logo = #{brandLogo,jdbcType=VARCHAR},
-      </if>
-      <if test="brandDesc != null">
         brand_desc = #{brandDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="brandStatus != null">
         brand_status = #{brandStatus,jdbcType=TINYINT},
-      </if>
-      <if test="brandOrder != null">
         brand_order = #{brandOrder,jdbcType=TINYINT},
-      </if>
-      <if test="modifiedTime != null">
-        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where brand_id = #{brandId,jdbcType=SMALLINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.BrandInfo">
-    update brand_info
-    set brand_name = #{brandName,jdbcType=VARCHAR},
-      telephone = #{telephone,jdbcType=VARCHAR},
-      brand_web = #{brandWeb,jdbcType=VARCHAR},
-      brand_logo = #{brandLogo,jdbcType=VARCHAR},
-      brand_desc = #{brandDesc,jdbcType=VARCHAR},
-      brand_status = #{brandStatus,jdbcType=TINYINT},
-      brand_order = #{brandOrder,jdbcType=TINYINT},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
-    where brand_id = #{brandId,jdbcType=SMALLINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.BrandInfo">
-    <id column="brand_id" jdbcType="SMALLINT" property="brandId" />
-    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
-    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
-    <result column="brand_web" jdbcType="VARCHAR" property="brandWeb" />
-    <result column="brand_logo" jdbcType="VARCHAR" property="brandLogo" />
-    <result column="brand_desc" jdbcType="VARCHAR" property="brandDesc" />
-    <result column="brand_status" jdbcType="TINYINT" property="brandStatus" />
-    <result column="brand_order" jdbcType="TINYINT" property="brandOrder" />
-    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    brand_id, brand_name, telephone, brand_web, brand_logo, brand_desc, brand_status, 
-    brand_order, modified_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from brand_info
-    where brand_id = #{brandId,jdbcType=SMALLINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
-    delete from brand_info
-    where brand_id = #{brandId,jdbcType=SMALLINT}
-  </delete>
-  <insert id="insert" parameterType="com.leo.taobao.entity.BrandInfo">
-    insert into brand_info (brand_id, brand_name, telephone, 
-      brand_web, brand_logo, brand_desc, 
-      brand_status, brand_order, modified_time
-      )
-    values (#{brandId,jdbcType=SMALLINT}, #{brandName,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
-      #{brandWeb,jdbcType=VARCHAR}, #{brandLogo,jdbcType=VARCHAR}, #{brandDesc,jdbcType=VARCHAR}, 
-      #{brandStatus,jdbcType=TINYINT}, #{brandOrder,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.leo.taobao.entity.BrandInfo">
-    insert into brand_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="brandId != null">
-        brand_id,
-      </if>
-      <if test="brandName != null">
-        brand_name,
-      </if>
-      <if test="telephone != null">
-        telephone,
-      </if>
-      <if test="brandWeb != null">
-        brand_web,
-      </if>
-      <if test="brandLogo != null">
-        brand_logo,
-      </if>
-      <if test="brandDesc != null">
-        brand_desc,
-      </if>
-      <if test="brandStatus != null">
-        brand_status,
-      </if>
-      <if test="brandOrder != null">
-        brand_order,
-      </if>
-      <if test="modifiedTime != null">
-        modified_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="brandId != null">
-        #{brandId,jdbcType=SMALLINT},
-      </if>
-      <if test="brandName != null">
-        #{brandName,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null">
-        #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="brandWeb != null">
-        #{brandWeb,jdbcType=VARCHAR},
-      </if>
-      <if test="brandLogo != null">
-        #{brandLogo,jdbcType=VARCHAR},
-      </if>
-      <if test="brandDesc != null">
-        #{brandDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="brandStatus != null">
-        #{brandStatus,jdbcType=TINYINT},
-      </if>
-      <if test="brandOrder != null">
-        #{brandOrder,jdbcType=TINYINT},
-      </if>
-      <if test="modifiedTime != null">
-        #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.BrandInfo">
-    update brand_info
-    <set>
-      <if test="brandName != null">
-        brand_name = #{brandName,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null">
-        telephone = #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="brandWeb != null">
-        brand_web = #{brandWeb,jdbcType=VARCHAR},
-      </if>
-      <if test="brandLogo != null">
-        brand_logo = #{brandLogo,jdbcType=VARCHAR},
-      </if>
-      <if test="brandDesc != null">
-        brand_desc = #{brandDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="brandStatus != null">
-        brand_status = #{brandStatus,jdbcType=TINYINT},
-      </if>
-      <if test="brandOrder != null">
-        brand_order = #{brandOrder,jdbcType=TINYINT},
-      </if>
-      <if test="modifiedTime != null">
-        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where brand_id = #{brandId,jdbcType=SMALLINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.BrandInfo">
-    update brand_info
-    set brand_name = #{brandName,jdbcType=VARCHAR},
-      telephone = #{telephone,jdbcType=VARCHAR},
-      brand_web = #{brandWeb,jdbcType=VARCHAR},
-      brand_logo = #{brandLogo,jdbcType=VARCHAR},
-      brand_desc = #{brandDesc,jdbcType=VARCHAR},
-      brand_status = #{brandStatus,jdbcType=TINYINT},
-      brand_order = #{brandOrder,jdbcType=TINYINT},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
-    where brand_id = #{brandId,jdbcType=SMALLINT}
-  </update>
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+        where brand_id = #{brandId,jdbcType=SMALLINT}
+    </update>
 </mapper>

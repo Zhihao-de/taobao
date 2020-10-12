@@ -1,5 +1,6 @@
 package com.leo.taobao.util;
 
+
 import org.springframework.data.redis.core.BoundListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -20,9 +21,6 @@ public class RedisUtil {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
-    public RedisUtil(RedisTemplate<String, Object> template) {
-        this.redisTemplate = template;
-    }
 
     /**
      * 指定缓存失效时间
@@ -602,6 +600,7 @@ public class RedisUtil {
      * @param expireEnum 有效期的枚举类
      * @param values     待添加的数据
      */
+    /*
     public void addToListRight(String listKey, Status.ExpireEnum expireEnum, Object... values) {
         //绑定操作
         BoundListOperations<String, Object> boundValueOperations = redisTemplate.boundListOps(listKey);
@@ -610,6 +609,7 @@ public class RedisUtil {
         //设置过期时间
         boundValueOperations.expire(expireEnum.getTime(), expireEnum.getTimeUnit());
     }
+*/
 
     /**
      * 根据起始结束序号遍历Redis中的list

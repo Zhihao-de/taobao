@@ -1,7 +1,12 @@
 package com.leo.taobao.dao;
 
 import com.leo.taobao.entity.OrderDetail;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+
+@Mapper
+@Component(value = "OrderDetailMapper")
 public interface OrderDetailMapper {
     int deleteByPrimaryKey(Integer orderDetailId);
 

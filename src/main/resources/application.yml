@@ -2,16 +2,19 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+
   datasource:
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/tb_data?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-    driver-class-name: com.mysql.jdbc.Driver
-
-    thymeleaf:
-      prefix: classpath:/templates/
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jackson:
-    date-format: yyyy-MM-d HH:mm:ss
+    date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   redis:
     host: 127.0.0.1
@@ -21,9 +24,10 @@ spring:
     max-idle: 20
     min-idle: 0
     time-out: 3000
-
 mybatis:
-  mapper-locations: classpath:mapper/*Mapper.xml
+  mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: com.leo.taobao.entity
+
+
 
 

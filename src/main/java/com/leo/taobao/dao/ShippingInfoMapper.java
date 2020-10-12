@@ -1,7 +1,12 @@
 package com.leo.taobao.dao;
 
 import com.leo.taobao.entity.ShippingInfo;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+
+@Mapper
+@Component(value = "ShippingInfoMapper")
 public interface ShippingInfoMapper {
     int deleteByPrimaryKey(Byte shipId);
 
