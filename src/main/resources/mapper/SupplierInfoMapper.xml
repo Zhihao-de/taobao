@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leo.taobao.dao.SupplierInfoMapper">
+  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.SupplierInfo">
+    <id column="supplier_id" jdbcType="INTEGER" property="supplierId" />
+    <result column="supplier_code" jdbcType="CHAR" property="supplierCode" />
+    <result column="supplier_name" jdbcType="CHAR" property="supplierName" />
+    <result column="supplier_type" jdbcType="TINYINT" property="supplierType" />
+    <result column="link_man" jdbcType="VARCHAR" property="linkMan" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="supplier_status" jdbcType="TINYINT" property="supplierStatus" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    supplier_id, supplier_code, supplier_name, supplier_type, link_man, phone_number, 
+    bank_name, bank_account, address, supplier_status, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_info
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from supplier_info
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.leo.taobao.entity.SupplierInfo">
+    insert into supplier_info (supplier_id, supplier_code, supplier_name, 
+      supplier_type, link_man, phone_number, 
+      bank_name, bank_account, address, 
+      supplier_status, modified_time)
+    values (#{supplierId,jdbcType=INTEGER}, #{supplierCode,jdbcType=CHAR}, #{supplierName,jdbcType=CHAR}, 
+      #{supplierType,jdbcType=TINYINT}, #{linkMan,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{bankName,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{supplierStatus,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.leo.taobao.entity.SupplierInfo">
+    insert into supplier_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="supplierCode != null">
+        supplier_code,
+      </if>
+      <if test="supplierName != null">
+        supplier_name,
+      </if>
+      <if test="supplierType != null">
+        supplier_type,
+      </if>
+      <if test="linkMan != null">
+        link_man,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankAccount != null">
+        bank_account,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="supplierStatus != null">
+        supplier_status,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="supplierCode != null">
+        #{supplierCode,jdbcType=CHAR},
+      </if>
+      <if test="supplierName != null">
+        #{supplierName,jdbcType=CHAR},
+      </if>
+      <if test="supplierType != null">
+        #{supplierType,jdbcType=TINYINT},
+      </if>
+      <if test="linkMan != null">
+        #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierStatus != null">
+        #{supplierStatus,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.SupplierInfo">
+    update supplier_info
+    <set>
+      <if test="supplierCode != null">
+        supplier_code = #{supplierCode,jdbcType=CHAR},
+      </if>
+      <if test="supplierName != null">
+        supplier_name = #{supplierName,jdbcType=CHAR},
+      </if>
+      <if test="supplierType != null">
+        supplier_type = #{supplierType,jdbcType=TINYINT},
+      </if>
+      <if test="linkMan != null">
+        link_man = #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierStatus != null">
+        supplier_status = #{supplierStatus,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.SupplierInfo">
+    update supplier_info
+    set supplier_code = #{supplierCode,jdbcType=CHAR},
+      supplier_name = #{supplierName,jdbcType=CHAR},
+      supplier_type = #{supplierType,jdbcType=TINYINT},
+      link_man = #{linkMan,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      supplier_status = #{supplierStatus,jdbcType=TINYINT},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.SupplierInfo">
+    <id column="supplier_id" jdbcType="INTEGER" property="supplierId" />
+    <result column="supplier_code" jdbcType="CHAR" property="supplierCode" />
+    <result column="supplier_name" jdbcType="CHAR" property="supplierName" />
+    <result column="supplier_type" jdbcType="TINYINT" property="supplierType" />
+    <result column="link_man" jdbcType="VARCHAR" property="linkMan" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="supplier_status" jdbcType="TINYINT" property="supplierStatus" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    supplier_id, supplier_code, supplier_name, supplier_type, link_man, phone_number, 
+    bank_name, bank_account, address, supplier_status, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_info
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from supplier_info
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.leo.taobao.entity.SupplierInfo">
+    insert into supplier_info (supplier_id, supplier_code, supplier_name, 
+      supplier_type, link_man, phone_number, 
+      bank_name, bank_account, address, 
+      supplier_status, modified_time)
+    values (#{supplierId,jdbcType=INTEGER}, #{supplierCode,jdbcType=CHAR}, #{supplierName,jdbcType=CHAR}, 
+      #{supplierType,jdbcType=TINYINT}, #{linkMan,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{bankName,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{supplierStatus,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.leo.taobao.entity.SupplierInfo">
+    insert into supplier_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="supplierCode != null">
+        supplier_code,
+      </if>
+      <if test="supplierName != null">
+        supplier_name,
+      </if>
+      <if test="supplierType != null">
+        supplier_type,
+      </if>
+      <if test="linkMan != null">
+        link_man,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankAccount != null">
+        bank_account,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="supplierStatus != null">
+        supplier_status,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="supplierCode != null">
+        #{supplierCode,jdbcType=CHAR},
+      </if>
+      <if test="supplierName != null">
+        #{supplierName,jdbcType=CHAR},
+      </if>
+      <if test="supplierType != null">
+        #{supplierType,jdbcType=TINYINT},
+      </if>
+      <if test="linkMan != null">
+        #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierStatus != null">
+        #{supplierStatus,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.SupplierInfo">
+    update supplier_info
+    <set>
+      <if test="supplierCode != null">
+        supplier_code = #{supplierCode,jdbcType=CHAR},
+      </if>
+      <if test="supplierName != null">
+        supplier_name = #{supplierName,jdbcType=CHAR},
+      </if>
+      <if test="supplierType != null">
+        supplier_type = #{supplierType,jdbcType=TINYINT},
+      </if>
+      <if test="linkMan != null">
+        link_man = #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierStatus != null">
+        supplier_status = #{supplierStatus,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.SupplierInfo">
+    update supplier_info
+    set supplier_code = #{supplierCode,jdbcType=CHAR},
+      supplier_name = #{supplierName,jdbcType=CHAR},
+      supplier_type = #{supplierType,jdbcType=TINYINT},
+      link_man = #{linkMan,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      supplier_status = #{supplierStatus,jdbcType=TINYINT},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </update>
+</mapper>

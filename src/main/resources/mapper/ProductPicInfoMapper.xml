@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leo.taobao.dao.ProductPicInfoMapper">
+  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.ProductPicInfo">
+    <id column="product_pic_id" jdbcType="INTEGER" property="productPicId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="pic_desc" jdbcType="VARCHAR" property="picDesc" />
+    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+    <result column="is_master" jdbcType="TINYINT" property="isMaster" />
+    <result column="pic_order" jdbcType="TINYINT" property="picOrder" />
+    <result column="pic_status" jdbcType="TINYINT" property="picStatus" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_pic_id, product_id, pic_desc, pic_url, is_master, pic_order, pic_status, 
+    modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product_pic_info
+    where product_pic_id = #{productPicId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product_pic_info
+    where product_pic_id = #{productPicId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.leo.taobao.entity.ProductPicInfo">
+    insert into product_pic_info (product_pic_id, product_id, pic_desc, 
+      pic_url, is_master, pic_order, 
+      pic_status, modified_time)
+    values (#{productPicId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{picDesc,jdbcType=VARCHAR}, 
+      #{picUrl,jdbcType=VARCHAR}, #{isMaster,jdbcType=TINYINT}, #{picOrder,jdbcType=TINYINT}, 
+      #{picStatus,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.leo.taobao.entity.ProductPicInfo">
+    insert into product_pic_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productPicId != null">
+        product_pic_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="picDesc != null">
+        pic_desc,
+      </if>
+      <if test="picUrl != null">
+        pic_url,
+      </if>
+      <if test="isMaster != null">
+        is_master,
+      </if>
+      <if test="picOrder != null">
+        pic_order,
+      </if>
+      <if test="picStatus != null">
+        pic_status,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productPicId != null">
+        #{productPicId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="picDesc != null">
+        #{picDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null">
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isMaster != null">
+        #{isMaster,jdbcType=TINYINT},
+      </if>
+      <if test="picOrder != null">
+        #{picOrder,jdbcType=TINYINT},
+      </if>
+      <if test="picStatus != null">
+        #{picStatus,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.ProductPicInfo">
+    update product_pic_info
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="picDesc != null">
+        pic_desc = #{picDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null">
+        pic_url = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isMaster != null">
+        is_master = #{isMaster,jdbcType=TINYINT},
+      </if>
+      <if test="picOrder != null">
+        pic_order = #{picOrder,jdbcType=TINYINT},
+      </if>
+      <if test="picStatus != null">
+        pic_status = #{picStatus,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where product_pic_id = #{productPicId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.ProductPicInfo">
+    update product_pic_info
+    set product_id = #{productId,jdbcType=INTEGER},
+      pic_desc = #{picDesc,jdbcType=VARCHAR},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      is_master = #{isMaster,jdbcType=TINYINT},
+      pic_order = #{picOrder,jdbcType=TINYINT},
+      pic_status = #{picStatus,jdbcType=TINYINT},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where product_pic_id = #{productPicId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.leo.taobao.entity.ProductPicInfo">
+    <id column="product_pic_id" jdbcType="INTEGER" property="productPicId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="pic_desc" jdbcType="VARCHAR" property="picDesc" />
+    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+    <result column="is_master" jdbcType="TINYINT" property="isMaster" />
+    <result column="pic_order" jdbcType="TINYINT" property="picOrder" />
+    <result column="pic_status" jdbcType="TINYINT" property="picStatus" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_pic_id, product_id, pic_desc, pic_url, is_master, pic_order, pic_status, 
+    modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product_pic_info
+    where product_pic_id = #{productPicId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product_pic_info
+    where product_pic_id = #{productPicId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.leo.taobao.entity.ProductPicInfo">
+    insert into product_pic_info (product_pic_id, product_id, pic_desc, 
+      pic_url, is_master, pic_order, 
+      pic_status, modified_time)
+    values (#{productPicId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{picDesc,jdbcType=VARCHAR}, 
+      #{picUrl,jdbcType=VARCHAR}, #{isMaster,jdbcType=TINYINT}, #{picOrder,jdbcType=TINYINT}, 
+      #{picStatus,jdbcType=TINYINT}, #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.leo.taobao.entity.ProductPicInfo">
+    insert into product_pic_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productPicId != null">
+        product_pic_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="picDesc != null">
+        pic_desc,
+      </if>
+      <if test="picUrl != null">
+        pic_url,
+      </if>
+      <if test="isMaster != null">
+        is_master,
+      </if>
+      <if test="picOrder != null">
+        pic_order,
+      </if>
+      <if test="picStatus != null">
+        pic_status,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productPicId != null">
+        #{productPicId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="picDesc != null">
+        #{picDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null">
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isMaster != null">
+        #{isMaster,jdbcType=TINYINT},
+      </if>
+      <if test="picOrder != null">
+        #{picOrder,jdbcType=TINYINT},
+      </if>
+      <if test="picStatus != null">
+        #{picStatus,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leo.taobao.entity.ProductPicInfo">
+    update product_pic_info
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="picDesc != null">
+        pic_desc = #{picDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null">
+        pic_url = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isMaster != null">
+        is_master = #{isMaster,jdbcType=TINYINT},
+      </if>
+      <if test="picOrder != null">
+        pic_order = #{picOrder,jdbcType=TINYINT},
+      </if>
+      <if test="picStatus != null">
+        pic_status = #{picStatus,jdbcType=TINYINT},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where product_pic_id = #{productPicId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leo.taobao.entity.ProductPicInfo">
+    update product_pic_info
+    set product_id = #{productId,jdbcType=INTEGER},
+      pic_desc = #{picDesc,jdbcType=VARCHAR},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      is_master = #{isMaster,jdbcType=TINYINT},
+      pic_order = #{picOrder,jdbcType=TINYINT},
+      pic_status = #{picStatus,jdbcType=TINYINT},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where product_pic_id = #{productPicId,jdbcType=INTEGER}
+  </update>
+</mapper>
