@@ -3,48 +3,82 @@ package com.leo.taobao.service.Customer.CustomerInf;
 
 import com.leo.taobao.dao.CustomerBalanceLogMapper;
 import com.leo.taobao.dao.CustomerInfMapper;
-import com.leo.taobao.dao.CustomerLoginLogMapper;
 import com.leo.taobao.dao.CustomerLoginMapper;
 import com.leo.taobao.entity.CustomerInf;
+import com.leo.taobao.entity.CustomerLogin;
+import com.leo.taobao.error.ErrCodes;
 import com.leo.taobao.util.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service
-@Transactional(readOnly = true)
+//根据
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 public class CustomerCreateService {
 
     private CustomerLoginMapper customerLoginMapper;
-
     private CustomerInfMapper customerInfMapper;
-
-    private CustomerLoginLogMapper customerLoginLogMapper;
-
     private CustomerBalanceLogMapper customerBalanceLogMapper;
 
-/*
-    @Autowired
-    public CustomerCreateService(CustomerInfMapper customerInfMapper) {
 
+    @Autowired
+    public CustomerCreateService(CustomerLoginMapper customerLoginMapper, CustomerInfMapper customerInfMapper, CustomerBalanceLogMapper customerBalanceLogMapper) {
+
+        this.customerLoginMapper = customerLoginMapper;
         this.customerInfMapper = customerInfMapper;
+        this.customerBalanceLogMapper = customerBalanceLogMapper;
     }
-*/
 
     /**
-     * 创建用户信息
+     * 创建用户资料信息
      *
-     * @param customerInfoId
+     * @param
      */
-    public ResponseResult createCustomerInfo(int customerInfoId) {
-        //1. set the customer Login info
-        CustomerLoginMapper customerLoginMapper = null;
-        System.out.println("dasdasdasdsadasdasd");
-        //2. set the customer Info
-        CustomerInf customerInf = new CustomerInf();
-        customerInf.setCustomerId(customerInfoId);
-        //3. initialize the balance data
+    public ResponseResult createCustomerInfo(CustomerInf customerInf) {
+        try {
+            Date date = new Date();//获得系统时间.
+            SimpleDateFormat sdf = new SimpleDateFormat(" yyyy-MM-dd HH:mm:ss ");
+            String nowTime = sdf.format(date);
+            Date time = sdf.parse(nowTime);
+            customerInf.setModifiedTime(time);
+            customerInfMapper.addCustomerInf(customerInf);
+            return ResponseResult.ok();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();//关键
+            return ResponseResult.error(ErrCodes.SERVICE_UNEXPECTED_ERROR, ex.getMessage());
+        }
 
-        return null;
     }
+
+    /**
+     * 创建用户登录信息
+     *
+     * @param
+     */
+    public ResponseResult createCustomerLoginInfo(CustomerLogin customerLogin) throws ParseException {
+        try {
+            Date date = new Date();//获得系统时间.
+            SimpleDateFormat sdf = new SimpleDateFormat(" yyyy-MM-dd HH:mm:ss ");
+            String nowTime = sdf.format(date);
+            Date time = sdf.parse(nowTime);
+            customerLogin.setModifiedTime(time);
+            int res = customerLoginMapper.addLoginInfo(customerLogin);
+
+            return ResponseResult.ok();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();//关键
+            return ResponseResult.error(ErrCodes.SERVICE_UNEXPECTED_ERROR, ex.getMessage());
+        }
+    }
+
+
 }

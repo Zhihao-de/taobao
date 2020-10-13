@@ -20,7 +20,6 @@ public class CustomerBalanceUpdateService {
     public CustomerBalanceUpdateService(CustomerBalanceLogMapper customerBalanceLogMapper) {
         this.customerBalanceLogMapper = customerBalanceLogMapper;
 
-
     }
 
     public ResponseResult updateBalance(int id, CustomerBalanceLog cbl) {

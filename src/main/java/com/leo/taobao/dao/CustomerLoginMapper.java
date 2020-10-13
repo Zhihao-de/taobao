@@ -10,11 +10,9 @@ import org.springframework.stereotype.Component;
 public interface CustomerLoginMapper {
     int deleteByPrimaryKey(Integer customerId);
 
-    int insert(CustomerLogin record);
+    int addLoginInfo(CustomerLogin record);
 
-    int insertSelective(CustomerLogin record);
-
-    CustomerLogin selectByPrimaryKey(Integer customerId);
+    CustomerLogin queryByCustomerId(Integer customerId);
 
     int updateByPrimaryKeySelective(CustomerLogin record);
 
