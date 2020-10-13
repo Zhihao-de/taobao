@@ -41,6 +41,7 @@ public class CustomerRetrievalService {
      */
     public CustomerInf getCustomerInfoByCustomerId(int customerId) {
         assert 0 < customerId;
+        System.out.println("dasdasdasdsadasdasd");
         CustomerInf customerInf = customerInfMapper.queryCustomerInfByCustomerId(customerId);
         return customerInf;
     }

@@ -39,6 +39,7 @@ public class CustomerCreateService {
     public ResponseResult createCustomerInfo(int customerInfoId) {
         //1. set the customer Login info
         CustomerLoginMapper customerLoginMapper = null;
+        System.out.println("dasdasdasdsadasdasd");
         //2. set the customer Info
         CustomerInf customerInf = new CustomerInf();
         customerInf.setCustomerId(customerInfoId);

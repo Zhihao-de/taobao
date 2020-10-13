@@ -20,12 +20,14 @@ public class CustomerBalanceUpdateService {
     public CustomerBalanceUpdateService(CustomerBalanceLogMapper customerBalanceLogMapper) {
         this.customerBalanceLogMapper = customerBalanceLogMapper;
 
+
     }
 
     public ResponseResult updateBalance(int id, CustomerBalanceLog cbl) {
         try {
             CustomerBalanceLog ccc = customerBalanceLogMapper.selectByPrimaryKey(id);
             int res = customerBalanceLogMapper.updateByPrimaryKey(cbl);
+            System.out.println("dasdasdasdsadasdasd");
             return ResponseResult.ok().put("message", "Data has been updated!");
         } catch (Exception ex) {
             ex.printStackTrace();
