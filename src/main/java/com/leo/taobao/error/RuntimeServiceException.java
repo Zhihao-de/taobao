@@ -4,7 +4,7 @@ package com.leo.taobao.error;
  * {@code RuntimeServiceException} is the class wrapping any
  * exception that can be thrown during the normal operation.
  *
- * @author  Naiming
+ *
  */
 public
 class RuntimeServiceException extends RuntimeException {

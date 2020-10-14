@@ -3,7 +3,9 @@ package com.leo.taobao.error;
 
 //import com.auth0.jwt.exceptions.TokenExpiredException;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.leo.taobao.util.ResponseResult;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -71,10 +73,11 @@ public class GlobalExceptionHandler {
      * @param exception 认证异常
      * @return
      */
-    /*
+
     @ExceptionHandler
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
+    //这里需要修改
     public Object handle(AuthenticationException exception) {
         ResponseResult result;
         Throwable throwable = exception.getCause();
@@ -85,7 +88,7 @@ public class GlobalExceptionHandler {
         }
         return result;
     }
-     */
+
 
     /**
      * @param exception 权限异常

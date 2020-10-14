@@ -5,7 +5,6 @@ import com.leo.taobao.dao.CustomerLoginMapper;
 import com.leo.taobao.entity.CustomerLogin;
 import com.leo.taobao.error.ErrCodes;
 import com.leo.taobao.util.ResponseResult;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +20,7 @@ public class BasicSignUpService extends SignUpServiceBase implements SignUpServi
     private CustomerLoginMapper customerLoginMapper;
 
     @Override
-    public ResponseResult signUp(@NotNull CustomerLogin customerLogin) {
+    public ResponseResult signUp(CustomerLogin customerLogin) {
         assert null != customerLogin.getLoginName();
         assert null != customerLogin.getPassword();
 
