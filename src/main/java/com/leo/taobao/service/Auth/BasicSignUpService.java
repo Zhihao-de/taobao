@@ -1,14 +1,15 @@
 package com.leo.taobao.service.Auth;
 
 
-import com.leo.taobao.entity.CustomerInf;
+import com.leo.taobao.dao.CustomerLoginMapper;
 import com.leo.taobao.entity.CustomerLogin;
 import com.leo.taobao.error.ErrCodes;
-import com.leo.taobao.security.PasswordUtils;
 import com.leo.taobao.util.ResponseResult;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.DigestUtils;
 
 import java.util.Date;
 
@@ -16,15 +17,20 @@ import java.util.Date;
 @Transactional
 public class BasicSignUpService extends SignUpServiceBase implements SignUpService {
 
+    @Autowired
+    private CustomerLoginMapper customerLoginMapper;
+
     @Override
-    public ResponseResult signUp(@NotNull CustomerInf customerInf, @NotNull CustomerLogin customerLogin) {
-        assert null != customerInf.getMobilePhone();
-        assert null != customerLogin.get;
+    public ResponseResult signUp(@NotNull CustomerLogin customerLogin) {
+        assert null != customerLogin.getLoginName();
+        assert null != customerLogin.getPassword();
 
         try {
-            user.setPassword(PasswordUtils.encrypt(user.getPassword()));
-            user.setJoinDate(new Date(System.currentTimeMillis()));
-            userMapper.createUserByPass(user);
+            //customerLogin.setPassword(md5.encrypt(customerLogin.getPassword()));
+            //此处先用md5加密  等下用shiro中的组件换
+            customerLogin.setPassword(DigestUtils.md5DigestAsHex(customerLogin.getPassword().getBytes()));
+            customerLogin.setModifiedTime(new Date(System.currentTimeMillis()));
+            customerLoginMapper.addLoginInfo(customerLogin);
             return ResponseResult.ok();
         } catch (Exception ex) {
             return ResponseResult.error(ErrCodes.SIGN_UP_ERROR, ex.getMessage());

@@ -28,6 +28,14 @@
         from customer_inf
         where customer_inf_id = #{customerInfId,jdbcType=INTEGER}
     </select>
+
+    <select id="queryCustomerInfByNumber" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from customer_inf
+        where mobile_phone = #{mobilePhone,jdbcType=INTEGER}
+    </select>
+
     <select id="queryCustomerInfByCustomerId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

@@ -17,6 +17,16 @@
         from customer_login
         where customer_id = #{customerId,jdbcType=INTEGER}
     </select>
+
+    <select id="queryCustomerByUsernameAndPassword" parameterType="com.leo.taobao.entity.CustomerLogin"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from customer_login
+        where login_name =#{loginName,jdbcType=VARCHAR}
+        and password=#{password,jdbcType=CHAR}
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from customer_login
         where customer_id = #{customerId,jdbcType=INTEGER}

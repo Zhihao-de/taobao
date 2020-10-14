@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @Mapper
-@Component(value = "customerBalanceLogMapper")
+@Component(value = "CustomerBalanceLogMapper")
 public interface CustomerBalanceLogMapper {
     int deleteByPrimaryKey(Integer balanceId);
 

@@ -14,6 +14,8 @@ public interface CustomerLoginMapper {
 
     CustomerLogin queryByCustomerId(Integer customerId);
 
+    CustomerLogin queryCustomerByUsernameAndPassword(CustomerLogin record);
+
     int updateByPrimaryKeySelective(CustomerLogin record);
 
     int updateByPrimaryKey(CustomerLogin record);

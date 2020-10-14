@@ -5,11 +5,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
 @Mapper
-@Component(value = "customerInfMapper")
+@Component(value = "CustomerInfMapper")
 public interface CustomerInfMapper {
     int deleteByPrimaryKey(Integer customerInfId);
 
     int addCustomerInf(CustomerInf record);
+
+    CustomerInf queryCustomerInfByNumber(Integer mobile);
 
     int insertSelective(CustomerInf record);
 
